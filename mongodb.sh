@@ -5,8 +5,9 @@ echo "
 [mongodb-org-4.2]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
-gpgcheck=0
+gpgcheck=1
 enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 " > /etc/yum.repos.d/mongo.repo
 [[ $? -ne 0 ]] && echo -e "$R [Setup the MongoDB repo file is failure ] $N" || echo -e "$G [Setup the MongoDB repo file is done successfully] $N"
 #-Install MongoDB
