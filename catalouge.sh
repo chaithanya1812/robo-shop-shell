@@ -19,7 +19,7 @@ mkdir -p /app
 #-Downloading source files
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip  &>/dev/null
 
-unzip /tmp/catalogue.zip -d ${ScriptLocation}/app/
+unzip -o /tmp/catalogue.zip -d ${ScriptLocation}/app/
 
 cd ${ScriptLocation}/app 
 npm install 
