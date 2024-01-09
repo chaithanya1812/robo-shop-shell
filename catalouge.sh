@@ -48,4 +48,4 @@ systemctl start catalogue
 dnf install mongodb-org-shell -y
 
 
-mongo --host MONGODB-SERVER-IPADDRESS < ${ScriptLocation}/app/schema/catalogue.js
+mongo --host localhost < ${ScriptLocation}/app/schema/catalogue.js
