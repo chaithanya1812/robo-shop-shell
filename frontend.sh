@@ -16,25 +16,30 @@ dnf install nginx -y > /dev/null
 
 # Removing files in /usr/share/nginx/html/*
 rm -rf /usr/share/nginx/html/* 
-[[ $? -ne 0 ]] && echo -e "$R [Removing file in /usr/share/nginx/html/* is not done failure ] $N" || echo -e "$G [ Removing file in /usr/share/nginx/html/* is done successfully] $N"
+[[ $? -ne 0 ]] && echo -e "$R [Removing file in /usr/share/nginx/html/* is failure ] $N" || echo -e "$G [ Removing file in /usr/share/nginx/html/* is done successfully] $N"
 
 #Downloading files of source-code
 
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip 
-[[ $? -ne 0 ]] && echo -e "$R [Removing file in /usr/share/nginx/html/* is not done failure ] $N" || echo -e "$G [ Removing file in /usr/share/nginx/html/* is done successfully] $N"
+[[ $? -ne 0 ]] && echo -e "$R [Downloading files is  failure ] $N" || echo -e "$G [Downloading files done successfully] $N"
 
 #unziping files
-
 unzip /tmp/frontend.zip -d /usr/share/nginx/html/
-[[ $? -ne 0 ]] && echo -e "$R [Removing file in /usr/share/nginx/html/* is not done failure ] $N" || echo -e "$G [ Removing file in /usr/share/nginx/html/* is done successfully] $N"
+[[ $? -ne 0 ]] && echo -e "$R [unziping files failure ] $N" || echo -e "$G [unziping files is done successfully] $N"
 
 #copying configuration file
 cp ${pwd}/files/nginx.conf /etc/nginx/default.d/roboshop.conf
-[[ $? -ne 0 ]] && echo -e "$R [Removing file in /usr/share/nginx/html/* is not done failure ] $N" || echo -e "$G [ Removing file in /usr/share/nginx/html/* is done successfully] $N"
+[[ $? -ne 0 ]] && echo -e "$R [copying configuration file is failure ] $N" || echo -e "$G [ copying configuration file is done successfully] $N"
 
 #Starting Nginx Server
 systemctl start nginx
+[[ $? -ne 0 ]] && echo -e "$R [Starting nginx is not done successfully ] $N" || echo -e "$G [Starting nginx is done successfully] $N"
 systemctl enable nginx 
+[[ $? -ne 0 ]] && echo -e "$R [Enable nginx-service is not done successfully ] $N" || echo -e "$G [Enable nginx-service is done successfully] $N"
 
-systemctl restart nginx 
-[[ $? -ne 0 ]] && echo -e "$R [Removing file in /usr/share/nginx/html/* is not done failure ] $N" || echo -e "$G [ Removing file in /usr/share/nginx/html/* is done successfully] $N"
+#Checking Difference and then process the restart
+diff  ${pwd}/files/nginx.conf /etc/nginx/default.d/roboshop.conf >/dev/null
+if [[ $? -ne 0 ]] ; then
+systemctl restart nginx
+[[ $? -ne 0 ]] && echo -e "$R [Restarting nginx is not done successfully ] $N" || echo -e "$G [Restarting nginx is done successfully] $N"
+fi
