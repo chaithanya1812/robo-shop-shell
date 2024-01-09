@@ -1,5 +1,5 @@
-R="\e[31"
-G="\e[32"
+R="\e[31m"
+G="\e[32m"
 N="\e[0m"
 echo -e "[Installing Nginx].."
 dnf install nginx -y > /dev/null
