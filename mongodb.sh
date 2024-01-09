@@ -1,6 +1,6 @@
 #- Setup the MongoDB repo file
 
-ScriptLocation=${pwd}
+ScriptLocation=$(pwd)
 echo ' 
 [mongodb-org-4.2]
 name=MongoDB Repository
