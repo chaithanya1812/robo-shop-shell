@@ -28,7 +28,7 @@ unzip /tmp/frontend.zip -d /usr/share/nginx/html/
 [[ $? -ne 0 ]] && echo -e "$R [unziping files failure ] $N" || echo -e "$G [unziping files is done successfully] $N"
 
 #copying configuration file
-cp ${pwd}/files/nginx.conf /etc/nginx/default.d/roboshop.conf
+cp ${ScriptLocation}/files/nginx.conf /etc/nginx/default.d/roboshop.conf
 [[ $? -ne 0 ]] && echo -e "$R [copying configuration file is failure ] $N" || echo -e "$G [ copying configuration file is done successfully] $N"
 
 #Starting Nginx Server
@@ -38,7 +38,7 @@ systemctl enable nginx
 [[ $? -ne 0 ]] && echo -e "$R [Enable nginx-service is not done successfully ] $N" || echo -e "$G [Enable nginx-service is done successfully] $N"
 
 #Checking Difference and then process the restart
-diff  ${pwd}/files/nginx.conf /etc/nginx/default.d/roboshop.conf >/dev/null
+diff  ${ScriptLocation}/files/nginx.conf /etc/nginx/default.d/roboshop.conf >/dev/null
 if [[ $? -ne 0 ]] ; then
 systemctl restart nginx
 [[ $? -ne 0 ]] && echo -e "$R [Restarting nginx is not done successfully ] $N" || echo -e "$G [Restarting nginx is done successfully] $N"
