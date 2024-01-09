@@ -4,7 +4,7 @@ N="\e[0m"
 ScriptLocation=$(pwd)
 
 dnf module disable nodejs -y > /dev/null 
-dnf module enable nodejs:18 -y /dev/null 
+dnf module enable nodejs:18 -y > /dev/null 
 
 dnf install nodejs -y > /dev/null
 
