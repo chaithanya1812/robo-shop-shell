@@ -14,6 +14,9 @@ gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 dnf install mongodb-org -y 
 [[ $? -ne 0 ]] && echo -e "$R [ Install MongoDB is failure ] $N" || echo -e "$G [Install MongoDB is done successfully] $N"
 
+#- Editing /etc/mongod.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+[[ $? -ne 0 ]] && echo -e "$R [ Editing /etc/mongod.conf  is failure ] $N" || echo -e "$G [Editing /etc/mongod.conf is done successfully] $N"
 #-Start & Enable MongoDB Service
 systemctl start mongod 
 [[ $? -ne 0 ]] && echo -e "$R [ Starting MongoDB is failure ] $N" || echo -e "$G [Starting MongoDB is done successfully] $N"
