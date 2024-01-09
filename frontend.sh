@@ -20,7 +20,7 @@ rm -rf /usr/share/nginx/html/*
 
 #Downloading files of source-code
 
-curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip >/dev/null
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>/dev/null
 [[ $? -ne 0 ]] && echo -e "$R [Downloading files is  failure ] $N" || echo -e "$G [Downloading files done successfully] $N"
 
 #unziping files
