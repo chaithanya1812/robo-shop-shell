@@ -9,7 +9,7 @@ if [ $1 -ne 0 ]; then
 echo -e "${R} $2 is failed ${N}"
 echo -e "${R} Check the log-file in ${LogFile}"
 else
-echo -e "${R} $2 is successfull ${N}"
+echo -e "${G} $2 is successfull ${N}"
 fi
 }
 
