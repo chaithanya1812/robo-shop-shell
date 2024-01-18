@@ -30,4 +30,11 @@ status_check $? "Enable Redis 6.2 from package streams."
  print_head "Install Redis"
  dnf install redis -y  &>> ${LogFile}
  status_check $? "Install Redis"
+print_head "Update listen address from 127.0.0.1 to 0.0.0.0"
+sed -i  '/^bind/ s/127.0.0.1/0.0.0.0/' /etc/redis/redis.conf 
+status_check $? "Update listen address from 127.0.0.1 to 0.0.0.0"
+
+print_head "Update listen address from 127.0.0.1 to 0.0.0.0"
+sed -i  '/^bind/ s/127.0.0.1/0.0.0.0/' /etc/redis.conf
+status_check $? "Update listen address from 127.0.0.1 to 0.0.0.0"
 
