@@ -10,6 +10,7 @@ echo "${R} $2 is failed ${N}"
 echo "${R} Check the log-file in ${LogFile}"
 else
 echo "${R} $2 is failed ${N}"
+fi
 }
 
 function print_head() {
