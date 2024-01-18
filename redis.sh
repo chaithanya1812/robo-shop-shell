@@ -38,3 +38,9 @@ print_head "Update listen address from 127.0.0.1 to 0.0.0.0"
 sed -i  '/^bind/ s/127.0.0.1/0.0.0.0/' /etc/redis.conf
 status_check $? "Update listen address from 127.0.0.1 to 0.0.0.0"
 
+print_head "Start & Enable Redis Service"
+systemctl start redis
+systemctl enable redis 
+status_check $? "Start & Enable Redis Service" 
+
+
