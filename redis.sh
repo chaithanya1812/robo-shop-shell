@@ -22,3 +22,12 @@ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>> ${Log
 
 status_check $? "Redis is offering the repo file as a rpm"
 
+print_head "Enable Redis 6.2 from package streams."
+
+dnf module enable redis:remi-6.2 -y &>> ${LogFile}
+status_check $? "Enable Redis 6.2 from package streams."
+
+ print_head "Install Redis"
+ dnf install redis -y  &>> ${LogFile}
+ status_check $? "Install Redis"
+
