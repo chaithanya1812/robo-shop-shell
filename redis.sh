@@ -9,12 +9,12 @@ if [ $1 -ne 0 ]; then
 echo -e "${R} $2 is failed ${N}"
 echo -e "${R} Check the log-file in ${LogFile}"
 else
-echo -e "${R} $2 is failed ${N}"
+echo -e "${R} $2 is successfull ${N}"
 fi
 }
 
 function print_head() {
-echo -e "{G} $1 {N}"
+echo -e "${G} $1 ${N}"
 }
 
 print_head "Redis is offering the repo file as a rpm"
